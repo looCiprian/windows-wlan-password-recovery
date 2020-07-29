@@ -45,7 +45,6 @@ func getProfiles() []string {
 	var regex = regexp.MustCompile(`.*: (.*)`)
 	var result = regex.FindAllStringSubmatch(string(out), -1)
 	for _, s := range result {
-		//fmt.Println(s)
 		for j := 1; j < len(s); j++ {
 			profiles = append(profiles, s[j][:len(s[j])-1])
 		}
@@ -65,9 +64,7 @@ func getPassword(profiles []string) map[string]string {
 		var regex = regexp.MustCompile(`Key Content.*: (.*)`)
 		var result = regex.FindAllStringSubmatch(string(out), -1)
 		for _, s := range result {
-			//fmt.Println(s)
 			for j := 1; j < len(s); j++ {
-				//keys = append(keys, s[j][:len(s[j])-1])
 				keys[profile] = s[j][:len(s[j])-1]
 			}
 		}
